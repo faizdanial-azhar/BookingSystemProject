@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class StudentManager {
-    private final String filename = "students.txt";
+    private final String filename = "C:\\Users\\faizd\\IdeaProjects\\BookingReal\\src\\main\\java\\StudentAuthGUI\\students.txt";
 
     public boolean registerStudent(Student student) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename, true))) {

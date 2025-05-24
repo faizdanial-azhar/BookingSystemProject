@@ -1,6 +1,0 @@
-Student Information:
-Matric No: 11
-Name: 11
-Email: 11
-Phone: 11
-Faculty: 11

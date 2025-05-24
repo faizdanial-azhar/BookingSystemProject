@@ -138,7 +138,7 @@ public class StudentAuthGUI extends Application {
             Student student = manager.loginStudent(matric, password);
             if (student != null) {
                 // Write student information to a text file
-                String studentInfoFile = "student_info_" + student.getMatric() + ".txt";
+                String studentInfoFile = "src\\main\\java\\StudentAuthGUI\\StudentInfo\\student_info_" + student.getMatric() + ".txt";
                 boolean writeSuccess = manager.writeStudentInfoToFile(student, studentInfoFile);
 
                 String successMessage = "Login successful! Welcome, " + student.getName();
