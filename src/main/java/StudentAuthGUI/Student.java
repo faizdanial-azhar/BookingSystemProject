@@ -24,9 +24,7 @@ public class Student {
     public String getPhone() { return phone; }
     public String getFaculty() { return faculty; }
 
-    public String toCSV() {
-        return String.join(",", matric, password, name, email, phone, faculty);
-    }
+
 
     public static Student fromCSV(String csvLine) {
         String[] parts = csvLine.split(",");

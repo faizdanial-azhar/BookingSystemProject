@@ -137,10 +137,21 @@ public class StudentAuthGUI extends Application {
 
             Student student = manager.loginStudent(matric, password);
             if (student != null) {
+                // Write student information to a text file
+                String studentInfoFile = "student_info_" + student.getMatric() + ".txt";
+                boolean writeSuccess = manager.writeStudentInfoToFile(student, studentInfoFile);
+
+                String successMessage = "Login successful! Welcome, " + student.getName();
+                if (writeSuccess) {
+                    successMessage += "\nStudent information has been written to " + studentInfoFile;
+                } else {
+                    successMessage += "\nFailed to write student information to file.";
+                }
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Login Success");
                 alert.setHeaderText(null);
-                alert.setContentText("Login successful! Welcome, " + student.getName());
+                alert.setContentText(successMessage);
                 alert.showAndWait();
 
                 // Open booking page
