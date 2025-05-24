@@ -1,0 +1,2 @@
+1,Futsal Court,10,5.0,08:00,22:00,true,src/facilitybooking/images/futsal.jpg
+2,Badminton Court,4,4.0,09:00,21:00,true,src/facilitybooking/images/badminton.jpeg
