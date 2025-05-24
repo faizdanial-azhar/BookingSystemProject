@@ -6,8 +6,8 @@ module com.example.bookingreal {
 
     opens com.example.bookingreal to javafx.fxml;
     exports com.example.bookingreal;
-    exports CourtBookingSystem;
-    opens CourtBookingSystem to javafx.fxml;
+    exports Court;
+    opens Court to javafx.fxml;
     exports PaymentPackage;
     opens PaymentPackage to javafx.fxml;
     exports StudentAuthGUI;

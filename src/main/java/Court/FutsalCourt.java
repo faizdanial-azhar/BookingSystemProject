@@ -1,4 +1,4 @@
-package CourtBookingSystem;
+package Court;
 
 public class FutsalCourt extends Facility {
     public FutsalCourt(int facility_no) {

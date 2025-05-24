@@ -1,9 +1,7 @@
 package PaymentPackage;
 
 
-import CourtBookingSystem.Booking;
 import FacilityBooking.Facility;
-import javafx.stage.Stage;
 
 public class Payment {
     private int payment_id;

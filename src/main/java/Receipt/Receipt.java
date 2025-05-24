@@ -1,4 +1,4 @@
-package CourtBookingSystem;
+package Receipt;
 /*
 public class Receipt {
     private Payment payment;
