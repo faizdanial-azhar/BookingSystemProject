@@ -1,6 +1,6 @@
 package PaymentPackage;
 
-
+/*
 import FacilityBooking.Facility;
 
 public class Payment {
@@ -37,3 +37,5 @@ public class Payment {
 
 
 }
+
+ */

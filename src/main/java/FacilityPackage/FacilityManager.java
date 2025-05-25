@@ -1,11 +1,11 @@
-package FacilityBooking;
+package FacilityPackage;
 
 
 import java.io.*;
 import java.util.*;
 
 public class FacilityManager {
-    private final String filename = "facilities.txt";
+    private final String filename = "src/main/java/FacilityPackage/facilities.txt";
 
     public List<Facility> loadFacilities() {
         List<Facility> facilities = new ArrayList<>();
@@ -28,6 +28,8 @@ public class FacilityManager {
             for (Facility facility : facilities) {
                 bw.write(facility.toCSV());
                 bw.newLine();
+                bw.write(facility.bookingsDetails());
+                bw.newLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,10 +39,10 @@ public class FacilityManager {
     public void initializeDefaultFacilities() {
         File file = new File(filename);
         if (!file.exists()) {
-            List<Facility> defaults = List.of(
-                    new Facility(1, "Futsal Court", 10, 5.0f, "08:00", "22:00", true, "src/facilitybooking/images/futsal.jpg"),
-                    new Facility(2, "Badminton Court", 4, 4.0f, "09:00", "21:00", true, "src/facilitybooking/images/badminton.jpeg")
-            );
+            List<Facility> defaults = new ArrayList<>();
+            defaults.add(new Facility(1, "Futsal Court", 10, 5.0f, "08:00", "22:00", true, "src/facilitybooking/images/futsal.jpg"));
+            defaults.add(new Facility(2, "Badminton Court", 4, 4.0f, "09:00", "21:00", true, "src/facilitybooking/images/badminton.jpeg"));
+
             saveFacilities(defaults);
         }
     }

@@ -1,5 +1,6 @@
-package FacilityBooking;
+package FacilityPackage;
 
+import BookingPackage.BookingInterfaces;
 import PaymentPackage.PaymentGateway;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -9,26 +10,29 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import BookingPackage.Booking;
+
+
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-public class BookingPage extends Application {
+public class FacilitySelection extends Application {
     private FacilityManager facilityManager = new FacilityManager();
     private List<Facility> facilities;
     private Facility selectedFacility = null;
     private String studentName;
     private Stage primaryStage;
+    private Label selectedCourtLabel = new Label("Selected Facility: None");
 
-    public BookingPage() {
+    public FacilitySelection() {
         // Default constructor required by JavaFX
     }
 
-    public BookingPage(String studentName) {
+    public FacilitySelection(String studentName) {
         this.studentName = studentName;
         // Initialize in a separate method that can be called from start()
     }
@@ -53,8 +57,12 @@ public class BookingPage extends Application {
         titleBox.setStyle("-fx-background-color: lightgray;");
         mainLayout.setTop(titleBox);
 
+
+        Label infoLabel = new Label("Select a facility to proceed to booking page.");
+
         // Scrollable facility list
-        ScrollPane scrollPane = new ScrollPane();
+        VBox rootPane = new VBox();
+
         VBox facilityListBox = new VBox(10);
         facilityListBox.setPadding(new Insets(10));
 
@@ -62,9 +70,8 @@ public class BookingPage extends Application {
             facilityListBox.getChildren().add(createFacilityCard(facility));
         }
 
-        scrollPane.setContent(facilityListBox);
-        scrollPane.setFitToWidth(true);
-        mainLayout.setCenter(scrollPane);
+        rootPane.getChildren().addAll(infoLabel, selectedCourtLabel, facilityListBox);
+        mainLayout.setCenter(rootPane);
 
         // Booking button
         Button bookingButton = new Button("Proceed Booking");
@@ -74,12 +81,14 @@ public class BookingPage extends Application {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Facility Selected");
                 alert.setHeaderText(null);
-                alert.setContentText("You selected: " + selectedFacility.getName());
+                alert.setContentText("You selected: " + selectedFacility.getName()+"\nRedirecting to booking page......");
+
                 alert.showAndWait();
 
-                PaymentGateway paymentGateway = new PaymentGateway();
-                Stage paymentStage = paymentGateway.qwerPaymentGateway();
-                paymentStage.show();
+                BookingInterfaces booking = new BookingInterfaces(selectedFacility);
+
+                Stage bookingStage = booking.bookingGateway();
+                bookingStage.show();
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("No Selection");
@@ -99,6 +108,8 @@ public class BookingPage extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+
 
     private void initializeFacilities() {
         facilityManager.initializeDefaultFacilities();
@@ -160,6 +171,8 @@ public class BookingPage extends Application {
             alert.setHeaderText(null);
             alert.setContentText(facility.getName() + " selected!");
             alert.showAndWait();
+            selectedCourtLabel.setText("Selected Facility: " + facility.getName());
+
         });
 
         // Hover effects

@@ -1,5 +1,6 @@
-package FacilityBooking
+package FacilityPackage
         ;
+
 public class Facility {
     private int facilityNo;
     private String name;
@@ -9,6 +10,7 @@ public class Facility {
     private String closeTime;
     private boolean isAvailable;
     private String imagePath; //added for image path (gambar facility mainly)
+
 
     public Facility(int facilityNo, String name, int capacity, float pricePerHour, String openTime, String closeTime, boolean isAvailable, String imagePath) {
         this.facilityNo = facilityNo;
@@ -25,11 +27,13 @@ public class Facility {
     public String getName() { return name; }
     public float getPricePerHour() { return pricePerHour; }
     public boolean isAvailable() { return isAvailable; }
-    public String getImagePath() { return imagePath; } //getter for image path (gambar)
+    public String getImagePath() { return imagePath; }
+
 
     public String toCSV() {
         return facilityNo + "," + name + "," + capacity + "," + pricePerHour + "," + openTime + "," + closeTime + "," + isAvailable + "," + imagePath;
     }
+
 
     public static Facility fromCSV(String csv) {
         String[] parts = csv.split(",");
@@ -42,13 +46,17 @@ public class Facility {
                 parts[4],
                 parts[5],
                 Boolean.parseBoolean(parts[6]),
-                parts[7] //now including imagePath (GAMBAR)
+                parts[7]
         );
     }
 
     @Override
     public String toString() {
         return "Facility No: " + facilityNo + " | " + name + " | RM" + pricePerHour + "/hr | Available: " + isAvailable;
+    }
+
+    public String bookingsDetails() {
+        return "Facility No: " + facilityNo + "\nName:" + name + " | RM" + pricePerHour + "/hr | Available: " + isAvailable;
     }
 }
 

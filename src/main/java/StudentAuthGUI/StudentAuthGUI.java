@@ -1,6 +1,6 @@
 package StudentAuthGUI;
 
-import FacilityBooking.BookingPage;
+import FacilityPackage.FacilitySelection;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -160,8 +160,8 @@ public class StudentAuthGUI extends Application {
                     primaryStage.close();
 
                     // Create and show the JavaFX BookingPage
-                    BookingPage bookingPage = new BookingPage(student.getName());
-                    bookingPage.showBookingPage(student.getName());
+                    FacilitySelection facilitySelection = new FacilitySelection(student.getName());
+                    facilitySelection.showBookingPage(student.getName());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

@@ -25,5 +25,6 @@ public class Receipt {
         System.out.println("Duration: " + payment.getBooking().getDuration() + " hour(s)");
         System.out.printf("Total: RM%.2f\n", payment.getTotalAmount());
     }
-}
-*/
+   }
+ */
+
